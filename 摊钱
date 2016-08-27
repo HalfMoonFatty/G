@@ -1,1 +1,2 @@
 A欠B的钱，B欠C的钱，C欠A的钱之类的，然后要找到最小的交易次数使得每个人的balance都能平衡
+http://stackoverflow.com/questions/877728/what-algorithm-to-use-to-determine-minimum-number-of-actions-required-to-get-the

@@ -1,0 +1,5 @@
+题目是一道类似 leetcode 337 House Robber III的树DP，从树的所有节点中选出一个子集使得子集里所有节点的和最大，限制条件是如果选择了一个节点就不能选它的parent。
+与leetcode 337的不同之处在于树可以有随机个孩子，不一定是binary tree。 
+做法是对每个节点维护两个DP变量，一个是包含此节点的max sum: s1，另一个是不包含此节点的max sum: s2 
+root_s1 = root->val + SUM(child_s2) for all children root_s2 = SUM(max{child_s1, child_s2}) for all children 
+用一遍postorder就能得出全局的max sum了。 

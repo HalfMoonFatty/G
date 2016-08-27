@@ -14,6 +14,29 @@ Example:
 src={1,0,2,3}; tgt={0,2,3,1};
 
 '''
+
+
+'''
+Solution:
+The question does not require the minimum swap number. 
+So, an easy way to do is, find the index of first does not match (except ZERO), 
+then swap ZERO with it, then swap ZERO with the tgt value of that index. 
+Just loop for all positions. Then, it is done. 
+eg. {0, 1, 2} -> {0, 2, 1} 
+first does not match index is 1, and tgt value is 2. 
+So, {0, 1, 2}-> {1, 0, 2}->{1, 2, 0} 
+
+If it require the minimum swap number, then, shortest path algorithm will resolve it. 
+Every permutation is one node, and all possible links are just a swap of ZERO. 
+For performance improvement, A* can be used. 
+So, never swap ZERO with any value that matched already. 
+And it is better to generate nodes in run time.
+
+https://www.careercup.com/question?id=5700226908160000
+
+'''
+
+
 def recoverArr(src,tar):
 
 	ind = {item:i for i, item in enumerate(tar)}

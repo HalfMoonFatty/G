@@ -63,7 +63,6 @@ For performance improvement, A* can be used.
 So, never swap ZERO with any value that matched already. 
 And it is better to generate nodes in run time.
 
-Time (n!)
 https://www.careercup.com/question?id=5700226908160000
 
 '''

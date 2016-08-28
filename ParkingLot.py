@@ -26,13 +26,6 @@ eg. {0, 1, 2} -> {0, 2, 1}
 first does not match index is 1, and tgt value is 2. 
 So, {0, 1, 2}-> {1, 0, 2}->{1, 2, 0} 
 
-If it require the minimum swap number, then, shortest path algorithm will resolve it. 
-Every permutation is one node, and all possible links are just a swap of ZERO. 
-For performance improvement, A* can be used. 
-So, never swap ZERO with any value that matched already. 
-And it is better to generate nodes in run time.
-
-https://www.careercup.com/question?id=5700226908160000
 
 '''
 
@@ -60,3 +53,17 @@ src = [0,1,2,3]
 tar = [2,0,3,1]
 recoverArr(src,tar)
 print tar
+
+
+'''
+Follow up:
+If it require the minimum swap number, then, shortest path algorithm will resolve it. 
+Every permutation is one node, and all possible links are just a swap of ZERO. 
+For performance improvement, A* can be used. 
+So, never swap ZERO with any value that matched already. 
+And it is better to generate nodes in run time.
+
+Time (n!)
+https://www.careercup.com/question?id=5700226908160000
+
+'''

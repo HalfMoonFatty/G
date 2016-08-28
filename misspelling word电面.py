@@ -21,7 +21,7 @@ print isMissSpelling(test,d)
 
 
 '''
-改进版本：最多有两个不一样
+Follow Up：最多有两个不一样
 '''
 import string
 def isMissSpelling(ss,start,d,k):

@@ -1,2 +1,19 @@
 A欠B的钱，B欠C的钱，C欠A的钱之类的，然后要找到最小的交易次数使得每个人的balance都能平衡
 http://stackoverflow.com/questions/877728/what-algorithm-to-use-to-determine-minimum-number-of-actions-required-to-get-the
+
+https://instant.1point3acres.com/thread/189359
+这题是个数学问题，最后你发现是一个公式，假设ABCDE 5个人，分别花了nums = {1, 2, 3, 4, 5}，假设从A的角度出发，分别计算A要给BCDE多少钱，
+如果是负数就反过来给A，最后结果是，A要给第i个人： gives = (n * nums - sum) / n; 其中n是总人数，sum是所有人花的钱总和，nums是第i个人花的钱。
+代码如下： 
+void giveMoney(vector &nums) 
+{ 
+    int n = nums.size(); 
+    int sum = 0; 
+    for (int i : nums) sum += i; 
+    for (int i = 1; i < n; ++ i) 
+    { 
+        int cur = (n * nums[i] - sum) * 1.0 / n; 
+        cout << "gives " << i << " $" << cur << endl; 
+    } 
+}
+

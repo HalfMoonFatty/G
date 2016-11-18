@@ -1,0 +1,25 @@
+题目是给一段程序，返回里面所有comments …… 问了半天才确定意思是输入一段String返回list of comments List 两种类型的comments：// 和 /* */ 
+楼主就说遍历一遍里面字符，找 //...\n 和 /*...*/ 中间的所有char加入list, 复杂度O(n) 
+三姐说好，直接先问有哪些test case.... 给了几个开始写code 三姐全程不发话。。。 
+写完以后问我 如果有// 在 " " 里面算不算comment。发现自己没有考虑到，赶紧加上。 
+然后开始口头过test case, 三姐依然全程不说话 （紧张*N） 过完test case后问如何优化。。。
+楼主蒙蔽，只好说时间上应该不好优化了，只遍历一遍已经最快O(n) 了 
+
+然后也就没继续问 最后问用了什么数据结构 ………… 这还能有什么数据结构啊。。。 
+战战兢兢的说了用了 linked list ..... 然后勉强说还有pointer （楼主用的是java），解释说两个指针一个遍历，另一个指着前一个comment 符号 (// 或 /*) 
+一旦遍历到的和前面的匹配就加入list of answer 
+
+
+链接: https://instant.1point3acres.com/thread/192632
+
+
+可以用stack来进行判断，stack存的是index信息。 如果遇到“//”或“/*”： 
+1.stack.peek为空或者不是双引号，就push， 
+2.stack.peek是“//”或者"*/"，则pop，并打印两个index之间的数据， 
+3.stack.peek是双引号，就不push。 
+
+如果遇到双引号，若stack.peek也是双引号，则弹出，若不是双引号，则push。 
+
+special case: "//"
+
+

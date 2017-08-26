@@ -1,0 +1,79 @@
+
+
+import collections
+class treeNode(object):
+    def __init__(self, val):
+        self.val = val
+        self.parent = None
+        self.children = set()
+        self.peers = set([val])
+
+
+class EmpRelation(object):
+ 
+    def __init__(self):
+        self.treeNode_map = {}
+
+
+    def getNode(self, val):
+        if val not in self.treeNode_map:
+            self.treeNode_map[val] = treeNode(val)
+        return self.treeNode_map[val]
+        
+
+    def manager(self, A, B):
+        node_A = self.getNode(A)
+        node_B = self.getNode(B)
+        node_A.children |= node_B.peers
+        for n in node_B.peers:
+            self.getNode(n).parent = node_A
+
+
+    def isManager(self, A, B):
+        node_A = self.getNode(A)
+        node_B = self.getNode(B)
+        while node_B.parent:
+            if node_B.parent == node_A:
+                return True
+            node_B = node_B.parent
+        return False
+        
+
+    def peer(self,A,B):
+        node_A = self.getNode(A)
+        node_B = self.getNode(B)
+        if node_A.parent:
+            node_A.parent.children.add(node_B)
+            node_B.parent = node_A.parent
+        elif node_B.parent:
+            node_B.parent.children.add(node_A)
+            node_A.parent = node_B.parent
+        node_A.peers |= node_B.peers
+        node_B.peers = node_A.peers
+
+
+            
+test1 = EmpRelation()
+test1.peer('a', 'b')
+test1.peer('c', 'd')
+test1.peer('e', 'f')
+test1.manager('x', 'b')
+test1.manager('x', 'c')
+assert test1.isManager('x', 'a')
+assert test1.isManager('x', 'b')
+assert test1.isManager('x', 'c')
+assert test1.isManager('x', 'd')
+assert not test1.isManager('x', 'e')
+assert not test1.isManager('x', 'f')
+print 'Test case 1 passed!'
+
+
+emp_relation = EmpRelation()
+emp_relation.manager("B", "C")
+emp_relation.manager("A", "B")
+emp_relation.peer("C","D")
+emp_relation.peer("B","E")
+assert emp_relation.isManager("A", "C")
+assert emp_relation.isManager("A", "D")
+assert emp_relation.isManager("A", "E")
+print 'Test case 2 passed!'

@@ -15,9 +15,11 @@ class Roomba(object):
   
   def move():
   
-  def trun_left():
+  def trun_left(self, k):
+    self.direction = (self.direction + k) % 4
     
-  def turn_right():
+  def turn_right(self, k):
+    self.trun_left(-k)
     
   def clean():
  
